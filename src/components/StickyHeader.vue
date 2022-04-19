@@ -19,17 +19,31 @@
               @click:append="alert"
             ></v-text-field>
           </v-col>
-          <span  class="mr-5 ml-5 time">
+          <span class="mr-5 ml-5 time">
             <v-icon color="red" large>mdi-clock-time-eight-outline</v-icon>
             9:00-18:00
           </span>
           <v-divider vertical></v-divider>
           <span class="mr-5 ml-5">
-            <v-icon color="red" large>mdi-web</v-icon> {{ lang }}
+            <v-menu offset-y open-on-hover>
+              <template v-slot:activator="{ on, attrs }">
+                <div v-bind="attrs" v-on="on">
+                  <v-icon color="red" large>mdi-web</v-icon> {{ lang }}
+                </div>
+              </template>
+              <v-list>
+                <v-list-item>
+                  <v-list-item-title>Turkmen</v-list-item-title>
+                </v-list-item>
+                <v-list-item>
+                  <v-list-item-title>Russki</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
           </span>
           <v-divider vertical></v-divider>
           <span class="mr-5 ml-5">
-            <v-icon color="red" large>mdi-phone</v-icon> Kontakty
+            <v-icon color="red" large>mdi-phone</v-icon> Habarlash
           </span>
           <v-divider vertical></v-divider>
           <span class="mr-5 ml-5">
@@ -40,7 +54,7 @@
             <v-icon color="red" large>mdi-account</v-icon> Profilim
           </span>
           <v-spacer> </v-spacer>
-          <div class="basket-info">
+          <div class="basket-info" @click="basketInfo = true">
             <v-icon color="red" large>mdi-cart-outline</v-icon>
             <v-spacer></v-spacer>
             {{ basketPrice }} manat
@@ -48,18 +62,34 @@
         </v-row>
       </v-container>
     </v-banner>
+    <v-navigation-drawer
+      tabindex="0"
+      app
+      right
+      color="blue"
+      v-model="basketInfo"
+    >
+      <v-card class="ma-5">
+        <p>you have nothing to buy</p>
+        <v-btn @click="closeBaksetInfo">close</v-btn>
+      </v-card>
+    </v-navigation-drawer>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    lang: "RU",
+    lang: "TM",
     basketPrice: 10000,
+    basketInfo: false,
   }),
   methods: {
     alert() {
       alert("Yangiiish");
+    },
+    closeBaksetInfo() {
+      this.basketInfo = false;
     },
   },
 };
@@ -70,7 +100,9 @@ img {
   height: 50px;
   width: auto;
 }
-.container, .col, .col-2 {
+.container,
+.col,
+.col-2 {
   margin-top: 1px;
   margin-bottom: 1px;
   padding: 2px;
@@ -87,7 +119,8 @@ img {
   border-radius: 15px;
   cursor: pointer;
 }
-span:not(.time), .logo {
+span:not(.time),
+.logo {
   cursor: pointer;
 }
 .logo-text {
