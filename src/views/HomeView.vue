@@ -1,12 +1,7 @@
 <template>
   <div>
     <v-layout class="ml-5" row>
-      <v-carousel
-        v-model="model"
-        height="300"
-        class="rounded-lg mr-2"
-        cycle="1"
-      >
+      <v-carousel v-model="model" height="300" class="rounded-lg mr-2" cycle>
         <v-carousel-item v-for="(color, i) in colors" :key="color">
           <v-sheet :color="color" height="100%">
             <v-row class="fill-height" justify="center" align-content="center">
@@ -42,28 +37,20 @@
         </v-card-actions>
       </v-card>
     </v-layout>
-    <v-row class="d-flex justify-space-between ml-5 mt-10">
-      <product-item />
-      <product-item />
-      <product-item />
-      <product-item />
-      <product-item />
-      <product-item />
-      <product-item />
-      <product-item />
-      <product-item />
-      <product-item />
-    </v-row>
+    <product-category categoryName="Almalar" />
+    <product-category categoryName="Garpyzlar" />
+    <product-category categoryName="Soganlar" />
+    <product-category categoryName="Gokler" />
   </div>
 </template>
 
 <script>
-import ProductItem from "../components/ProductItem.vue";
+import ProductCategory from "../components//ProductCategory.vue";
 export default {
   name: "HomeView",
 
   components: {
-    ProductItem,
+    ProductCategory,
   },
   data: () => ({
     model: 0,
@@ -73,7 +60,8 @@ export default {
 </script>
 
 <style scoped>
-/* div {
-  margin-top: 10px;
-}  */
+.products {
+  display: flex;
+  gap: 1.25%;
+}
 </style>

@@ -3,9 +3,11 @@
     <v-banner single-line sticky color="#f6f6f6">
       <v-container>
         <v-row align="center">
-          <v-col cols="2" class="logo">
-            <img src="@/assets/logo.jpeg" alt="Logo" />
-            <span class="logo-text"> Elyeter Haryt</span>
+          <v-col cols="2" class="logo" router-to="/">
+            <router-link to="/">
+              <img src="@/assets/logo.jpeg" alt="Logo" />
+              <span class="logo-text"> Elyeter Haryt</span>
+            </router-link>
           </v-col>
           <v-col cols="2" row>
             <v-text-field
@@ -73,16 +75,16 @@
         <v-btn @click="closeBaksetInfo">close</v-btn>
       </v-card>
     </v-navigation-drawer>
-    <UserRegistration/>
+    <UserRegistration />
   </div>
 </template>
 
 <script>
-import UserRegistration from "./UserRegistration.vue"
-import { bus } from "../main"
+import UserRegistration from "./UserRegistration.vue";
+import { bus } from "../main";
 export default {
   components: {
-    UserRegistration
+    UserRegistration,
   },
   data: () => ({
     lang: "TM",
@@ -96,13 +98,10 @@ export default {
     closeBaksetInfo() {
       this.basketInfo = false;
     },
-    register(){
-      bus.$emit('opendialog');
-    }
+    register() {
+      bus.$emit("opendialog");
+    },
   },
-  created:{
-    
-  }
 };
 </script>
 
@@ -142,7 +141,6 @@ span:not(.time, .logo-text):hover {
 }
 .basket-info:hover {
   background: rgb(231, 229, 229);
-
 }
 
 .logo-text {
