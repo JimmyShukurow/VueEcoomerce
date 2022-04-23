@@ -16,7 +16,7 @@
         </section>
         <v-divider dark></v-divider>
       </template>
-      <v-list>
+      <v-list class="rounded-lg">
         <v-list-item v-for="(item, index) in items" :key="index">
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
@@ -27,6 +27,8 @@
 <script>
 export default {
   props: ["icon", "title"],
+  components: {
+  },
   data: () => ({
     items: [
       { title: "Click Me" },
@@ -39,10 +41,9 @@ export default {
 </script>
 
 <style scoped>
-.v-menu__content {
-  border-radius: 10px;
+/* .v-menu__content {
   background: grey;
-}
+} */
 .main {
   border-left: 4px solid rgba(128, 128, 128, 0);
   color: #f6f6f6;
