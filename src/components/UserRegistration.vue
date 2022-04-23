@@ -12,44 +12,22 @@
                 <v-text-field label="First name*" required></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="6">
-                <v-text-field
-                  label="Last name*"
-                  required
-                ></v-text-field>
+                <v-text-field label="Last name*" required></v-text-field>
               </v-col>
-              <v-col cols="12">
+              <v-col cols="12" sm="6" md="6">
                 <v-text-field label="Email*" required></v-text-field>
               </v-col>
+              <v-col cols="12" sm="6" md="6">
+                <v-text-field label="Password*" type="password" required ></v-text-field>
+              </v-col>
+               <v-col cols="12" sm="6" md="6">
+                <v-text-field label="Phone Number*"  required ></v-text-field>
+              </v-col>
+              <v-col cols="12" sm="6" md="6">
+                <v-text-field label="Zip code*"  required ></v-text-field>
+              </v-col>
               <v-col cols="12">
-                <v-text-field
-                  label="Password*"
-                  type="password"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-select
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                  label="Age*"
-                  required
-                ></v-select>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="[
-                    'Skiing',
-                    'Ice hockey',
-                    'Soccer',
-                    'Basketball',
-                    'Hockey',
-                    'Reading',
-                    'Writing',
-                    'Coding',
-                    'Basejump',
-                  ]"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
+                <v-text-field label="Adress*"  required ></v-text-field>
               </v-col>
             </v-row>
           </v-container>
@@ -69,15 +47,15 @@
   </v-row>
 </template>
 <script>
-import { bus } from "../main";
+import { bus } from '@/main';
 export default {
-  data: () => ({
-    dialog: false,
+  data:() => ({
+    dialog: false
   }),
-  created() {
-    bus.$on("toggleModal", () => {
-      this.dialog = !this.dialog;
-    });
-  },
+  created(){
+    bus.$on('opendialog', ()=>{
+      this.dialog = true
+    })
+  }
 };
 </script>

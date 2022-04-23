@@ -12,7 +12,6 @@
               rounded
               solo
               dense
-              v-model="message"
               append-icon="mdi-magnify"
               clearable
               hide-details="auto"
@@ -20,7 +19,7 @@
             ></v-text-field>
           </v-col>
           <span class="mr-5 ml-5 time">
-            <v-icon color="red" large>mdi-clock-time-eight-outline</v-icon>
+            <v-icon color="#3a7bbc" large>mdi-clock-time-eight-outline</v-icon>
             9:00-18:00
           </span>
           <v-divider vertical></v-divider>
@@ -28,7 +27,7 @@
             <v-menu offset-y open-on-hover>
               <template v-slot:activator="{ on, attrs }">
                 <div v-bind="attrs" v-on="on">
-                  <v-icon color="red" large>mdi-web</v-icon> {{ lang }}
+                  <v-icon color="#3a7bbc" large>mdi-web</v-icon> {{ lang }}
                 </div>
               </template>
               <v-list>
@@ -43,19 +42,19 @@
           </span>
           <v-divider vertical></v-divider>
           <span class="mr-5 ml-5">
-            <v-icon color="red" large>mdi-phone</v-icon> Habarlash
+            <v-icon color="#3a7bbc" large>mdi-phone</v-icon> Habarlash
           </span>
           <v-divider vertical></v-divider>
           <span class="mr-5 ml-5">
-            <v-icon color="red" large>mdi-heart-outline</v-icon> Yatda sakla
+            <v-icon color="#3a7bbc" large>mdi-heart-outline</v-icon> Yatda sakla
           </span>
           <v-divider vertical></v-divider>
-          <span class="mr-5 ml-5">
-            <v-icon color="red" large>mdi-account</v-icon> Profilim
+          <span class="mr-5 ml-5" @click="register">
+            <v-icon color="#3a7bbc" large>mdi-account</v-icon> Profilim
           </span>
           <v-spacer> </v-spacer>
           <div class="basket-info" @click="basketInfo = true">
-            <v-icon color="red" large>mdi-cart-outline</v-icon>
+            <v-icon color="#3a7bbc" large>mdi-cart-outline</v-icon>
             <v-spacer></v-spacer>
             {{ basketPrice }} manat
           </div>
@@ -74,11 +73,17 @@
         <v-btn @click="closeBaksetInfo">close</v-btn>
       </v-card>
     </v-navigation-drawer>
+    <UserRegistration/>
   </div>
 </template>
 
 <script>
+import UserRegistration from "./UserRegistration.vue"
+import { bus } from "../main"
 export default {
+  components: {
+    UserRegistration
+  },
   data: () => ({
     lang: "TM",
     basketPrice: 10000,
@@ -91,7 +96,13 @@ export default {
     closeBaksetInfo() {
       this.basketInfo = false;
     },
+    register(){
+      bus.$emit('opendialog');
+    }
   },
+  created:{
+    
+  }
 };
 </script>
 
@@ -123,11 +134,22 @@ span:not(.time),
 .logo {
   cursor: pointer;
 }
+span:not(.time, .logo-text):hover {
+  padding: 5px 0;
+  border-radius: 15px;
+  background: rgb(231, 229, 229);
+  color: green;
+}
+.basket-info:hover {
+  background: rgb(231, 229, 229);
+
+}
+
 .logo-text {
   position: absolute;
   top: 20%;
   height: inherit;
-  background-color: red;
+  background-color: #3a7bbc;
   color: #f6f6f6;
   font-size: 20px;
   padding: 5px;
