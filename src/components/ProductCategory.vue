@@ -6,7 +6,7 @@
       <v-chip> Hemmesi <v-icon> mdi-chevron-right </v-icon> </v-chip>
     </v-row>
     <v-row class="products ml-5">
-      <product-item heart="mdi-heart-outline" />
+      <product-item heart="mdi-heart-outline" image="../assets/test.webp"/>
       <product-item heart="mdi-heart" />
       <product-item heart="mdi-heart" />
       <product-item heart="mdi-heart" />

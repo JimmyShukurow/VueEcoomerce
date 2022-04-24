@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sticky-main">
     <v-banner single-line sticky color="#f6f6f6">
       <v-container>
         <v-row align="center">
@@ -55,7 +55,7 @@
             <v-icon color="#3a7bbc" large>mdi-account</v-icon> Profilim
           </span>
           <v-spacer> </v-spacer>
-          <div class="basket-info" @click="basketInfo = true">
+          <div class="basket-info" @click.stop="openBasketInfo">
             <v-icon color="#3a7bbc" large>mdi-cart-outline</v-icon>
             <v-spacer></v-spacer>
             {{ basketPrice }} manat
@@ -63,18 +63,6 @@
         </v-row>
       </v-container>
     </v-banner>
-    <v-navigation-drawer
-      tabindex="0"
-      app
-      right
-      color="blue"
-      v-model="basketInfo"
-    >
-      <v-card class="ma-5">
-        <p>you have nothing to buy</p>
-        <v-btn @click="closeBaksetInfo">close</v-btn>
-      </v-card>
-    </v-navigation-drawer>
     <UserRegistration />
   </div>
 </template>
@@ -95,12 +83,13 @@ export default {
     alert() {
       alert("Yangiiish");
     },
-    closeBaksetInfo() {
-      this.basketInfo = false;
-    },
+   
     register() {
       bus.$emit("opendialog");
     },
+    openBasketInfo(){
+      bus.$emit('openbasket')
+    }
   },
 };
 </script>
@@ -153,5 +142,10 @@ span:not(.time, .logo-text):hover {
   padding: 5px;
   border-radius: 10px;
   font-weight: 800;
+}
+.sticky-main {
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
 </style>

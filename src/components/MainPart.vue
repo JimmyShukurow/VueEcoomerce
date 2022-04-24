@@ -11,6 +11,7 @@
       </v-col>
       <v-col cols="10">
         <router-view></router-view>
+       
       </v-col>
     </v-row>
   </v-container>

@@ -41,6 +41,9 @@
     <product-category categoryName="Garpyzlar" />
     <product-category categoryName="Soganlar" />
     <product-category categoryName="Gokler" />
+    <div class="d-flex justify-center ma-10">
+      <v-btn color="success">Yene de yukle <v-icon>mdi-chevron-down</v-icon> </v-btn>
+    </div>
   </div>
 </template>
 
